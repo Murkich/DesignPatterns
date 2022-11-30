@@ -1,0 +1,22 @@
+package com.dnoviy.creational.factorymethod;
+
+public class Program {
+    public static void main(String[] args) {
+        DeveloperFactory developerFactory = creatDeveloperBySpeciality("php");
+        Developer developer = developerFactory.createDeveloper();
+
+        developer.writeCode();
+    }
+
+    static DeveloperFactory creatDeveloperBySpeciality(String specialty) {
+        if (specialty.equalsIgnoreCase("java")) {
+            return new JavaDeveloperFactory();
+        } else if (specialty.equalsIgnoreCase("cpp")) {
+            return new CppDeveloperFactory();
+        } else if (specialty.equalsIgnoreCase("php")) {
+            return new PhpDeveloperFactory();
+        } else {
+            throw new RuntimeException(specialty + " is unknown speciality");
+        }
+    }
+}
